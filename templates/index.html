@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>SummaRise</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>SummaRise</h1>
+    <ul data-js="pokedex" class="pokedex"></ul>
+
+    <form method="POST" action="/upload" enctype="multipart/form-data" onsubmit="updateFileName()">
+      <label class="upload-label">
+        <span>Choose File</span>
+        <input type="file" name="file" id="fileInput" onchange="displayFileName()">
+      </label>
+      <input type="submit" value="Upload" class="submit-button">
+      <p id="fileNameDisplay"></p>
+    </form>
+
+    {% if lex_summary %}
+        <div class="summary-container">
+            {% for paragraph in lex_summary %}
+                <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+    {% else %}
+
+    {% endif %}
+    <br>
+  </div>
+  <script src="/static/index.js"></script>
+</body>
+</html>
